@@ -1,5 +1,7 @@
 public class myFirstJava {
     public static void main(String[] args){
-        System.out.println("我吃柠檬");
+        String a = "sdsdsd";
+        byte b  = 99;
+        System.out.println(a);
     }
 }
