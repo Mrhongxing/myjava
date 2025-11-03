@@ -9,7 +9,15 @@ public class demo1 {
         System.out.println("Hello, " + name + "!");
         scanner.close();
         Random random = new Random();
-        int randomNumber = random.nextInt(100); // 生成0到99之间的随机数
+        int randomNumber = random.nextInt(100)+11; // 生成11到110之间的随机数
         System.out.println("Random number: " + randomNumber);
+        switch (randomNumber) {
+            case 11:
+                System.out.println("wcnm");
+                break;
+            default:
+            System.out.println("其他情况");
+                break;
+        }
     }
 }
