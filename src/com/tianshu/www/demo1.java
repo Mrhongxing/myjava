@@ -19,5 +19,8 @@ public class demo1 {
             System.out.println("其他情况");
                 break;
         }
+        if (name.equals("hong")) {
+            System.err.println("你是红老师");
+        }
     }
 }
