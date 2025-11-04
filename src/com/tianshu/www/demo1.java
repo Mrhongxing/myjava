@@ -22,5 +22,18 @@ public class demo1 {
         if (name.equals("hong")) {
             System.err.println("你是红老师");
         }
+        int a = 0;
+        while (true) {
+            if (a==3) {
+                break;
+            };
+            a++;
+        }
+    }
+}
+class Innerdemo1 {
+    public int displayMessage() {
+        System.out.println("This is an inner class example.");
+        return 0;
     }
 }
