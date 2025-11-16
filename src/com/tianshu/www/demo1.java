@@ -3,7 +3,7 @@ import java.util.*;//导入java.util包下的所有类
 //import com.tianshu.www.demo2;;//导入www.tianshu.com包下的所有类
 public class demo1 {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);//创建Scanner对象以获取用户输入
         System.out.print("Enter your name: ");
         String name = scanner.nextLine();
         System.out.println("Hello, " + name + "!");
