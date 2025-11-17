@@ -1,6 +1,7 @@
 package com.tianshu.www;
 
-import java.sql.Date;
+import java.util.Date;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 public class exception {
@@ -10,8 +11,13 @@ public class exception {
         try {
             Date date = sdf.parse(time);
             System.out.println(date);
-        } catch (Exception e) {
+        } catch (ParseException e) {
             e.printStackTrace();
+        }catch (Exception e) {
+            e.printStackTrace();
+        }finally {
+            System.out.println("Execution completed.");
+            System.exit(0);
         }
     }
 }
