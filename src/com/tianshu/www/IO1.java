@@ -4,9 +4,10 @@ import java.io.File;
 import java.io.FileWriter;
 
 public class IO1 {
-    public void main(String[] args) {
+    public static void main(String[] args) {
         IO1 io1 = new IO1();
         io1.writeFile();
+        
     }
     FileWriter fw = null;
     public void writeFile() {
