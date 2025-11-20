@@ -1,7 +1,9 @@
 package com.tianshu.www;
 
 import java.text.SimpleDateFormat;
+import java.time.Duration;
 import java.time.LocalDateTime;
+import java.time.Period;
 
 public class date3 {
     public static void main(String[] args) {
@@ -30,5 +32,11 @@ public class date3 {
         localdate = localdate.withMinute(30);//修改分
         localdate = localdate.withSecond(50);//修改秒
         System.out.println("修改后时间：" + localdate);
+        Period period = Period.between(LocalDateTime.now().toLocalDate(), localDate1.toLocalDate());
+        System.out.println("距离2025年1月1日还有：" + period.getYears() + "年" + period.getMonths() + "月" + period.getDays() + "天");
+        System.out.println(period);
+        Duration duration = Duration.between(LocalDateTime.now(), localDate1);
+        System.out.println("距离2025年1月1日还有：" + duration.toDays() + "天");
+        System.out.println(duration);
     }
 }
