@@ -36,7 +36,7 @@ public class date3 {
         System.out.println("距离2025年1月1日还有：" + period.getYears() + "年" + period.getMonths() + "月" + period.getDays() + "天");
         System.out.println(period);
         Duration duration = Duration.between(LocalDateTime.now(), localDate1);
-        System.out.println("距离2025年1月1日还有：" + duration.toDays() + "天");
+        System.out.println("距离2025年1月1日还有：" + duration.toDays() + "天"+ duration.toHoursPart() + "小时" + duration.toMinutesPart() + "分" + duration.toSecondsPart() + "秒");
         System.out.println(duration);
     }
 }
