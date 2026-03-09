@@ -21,6 +21,7 @@ public class yvshui {
             } else if (left <= num[i]) {
                 left = num[i];
                 position = i;
+                hasleft=true;
             } else {
                 middle = num[i];
             }
