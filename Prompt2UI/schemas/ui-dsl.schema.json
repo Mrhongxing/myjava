@@ -1,0 +1,455 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "UI DSL Document",
+  "type": "object",
+  "required": ["version", "kind", "document", "page"],
+  "properties": {
+    "version": {
+      "type": "string",
+      "enum": ["1.1"]
+    },
+    "kind": {
+      "type": "string",
+      "enum": ["ui_document"]
+    },
+    "document": {
+      "type": "object",
+      "required": ["id", "name"],
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "description": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "timestamps": {
+      "type": "object",
+      "properties": {
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "sourcePrompt": {
+      "type": "string"
+    },
+    "blueprint": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "type": "string"
+        },
+        "pageType": {
+          "type": "string",
+          "enum": [
+            "landing",
+            "dashboard",
+            "form",
+            "blog",
+            "portfolio",
+            "marketing",
+            "unknown"
+          ]
+        },
+        "intent": {
+          "type": "string",
+          "enum": [
+            "product_promo",
+            "saas",
+            "personal_brand",
+            "content",
+            "ecommerce",
+            "unknown"
+          ]
+        },
+        "theme": {
+          "type": "object",
+          "properties": {
+            "mode": {
+              "type": "string",
+              "enum": ["light", "dark"]
+            },
+            "style": {
+              "type": "string",
+              "enum": ["minimal", "modern", "playful", "enterprise", "editorial"]
+            },
+            "primaryColor": {
+              "type": "string"
+            },
+            "radius": {
+              "type": "string"
+            },
+            "density": {
+              "type": "string",
+              "enum": ["compact", "comfortable", "spacious"]
+            }
+          },
+          "additionalProperties": false
+        },
+        "content": {
+          "type": "object",
+          "properties": {
+            "tone": {
+              "type": "string",
+              "enum": ["professional", "friendly", "bold", "technical"]
+            },
+            "audience": {
+              "type": "string"
+            },
+            "primaryGoal": {
+              "type": "string"
+            },
+            "callToAction": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false
+        },
+        "sections": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "type"],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string",
+                "enum": [
+                  "navbar",
+                  "hero",
+                  "feature_grid",
+                  "feature_list",
+                  "pricing",
+                  "testimonial",
+                  "faq",
+                  "cta",
+                  "contact_form",
+                  "footer",
+                  "custom"
+                ]
+              },
+              "name": {
+                "type": "string"
+              },
+              "purpose": {
+                "type": "string"
+              },
+              "priority": {
+                "type": "number"
+              },
+              "required": {
+                "type": "boolean"
+              },
+              "constraints": {
+                "type": "object",
+                "properties": {
+                  "preserveOrder": {
+                    "type": "boolean"
+                  },
+                  "preserveLayout": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": false
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "notes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "designSystem": {
+      "type": "object",
+      "properties": {
+        "tokensRef": { "type": "string" },
+        "theme": {
+          "type": "object",
+          "properties": {
+            "mode": {
+              "type": "string",
+              "enum": ["light", "dark"]
+            },
+            "preset": { "type": "string" }
+          },
+          "additionalProperties": false
+        },
+        "overrides": {
+          "type": "object",
+          "additionalProperties": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "page": {
+      "$ref": "#/definitions/node"
+    },
+    "responsive": {
+      "type": "object",
+      "properties": {
+        "breakpointsRef": { "type": "string" },
+        "rules": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["target"],
+            "properties": {
+              "target": { "type": "string" },
+              "mobile": { "$ref": "#/definitions/style" },
+              "tablet": { "$ref": "#/definitions/style" },
+              "desktop": { "$ref": "#/definitions/style" }
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "editing": {
+      "type": "object",
+      "properties": {
+        "editable": { "type": "boolean" },
+        "nodeUpdateMode": {
+          "type": "string",
+          "enum": ["replace", "patch"]
+        }
+      },
+      "additionalProperties": false
+    },
+    "validation": {
+      "type": "object",
+      "properties": {
+        "schema": { "type": "string" },
+        "strict": { "type": "boolean" }
+      },
+      "additionalProperties": false
+    },
+    "meta": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "definitions": {
+    "node": {
+      "type": "object",
+      "required": ["id", "type"],
+      "properties": {
+        "id": { "type": "string" },
+        "type": {
+          "type": "string"
+        },
+        "name": { "type": "string" },
+        "role": { "type": "string" },
+        "props": {
+          "type": "object",
+          "additionalProperties": true
+        },
+        "style": {
+          "$ref": "#/definitions/style"
+        },
+        "events": {
+          "type": "object",
+          "properties": {
+            "onClick": {
+              "$ref": "#/definitions/event"
+            },
+            "onSubmit": {
+              "$ref": "#/definitions/event"
+            }
+          },
+          "additionalProperties": false
+        },
+        "bindings": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "meta": {
+          "type": "object",
+          "additionalProperties": true
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/node"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "event": {
+      "type": "object",
+      "required": ["action"],
+      "properties": {
+        "action": {
+          "type": "string",
+          "enum": [
+            "navigate",
+            "submit_form",
+            "scroll_to",
+            "open_modal",
+            "toggle",
+            "custom"
+          ]
+        },
+        "target": { "type": "string" },
+        "payload": {
+          "type": "object",
+          "additionalProperties": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "style": {
+      "type": "object",
+      "properties": {
+        "layout": {
+          "type": "object",
+          "properties": {
+            "mode": {
+              "type": "string",
+              "enum": ["flex", "grid", "stack", "none"]
+            },
+            "direction": {
+              "type": "string",
+              "enum": ["row", "column"]
+            },
+            "gap": { "type": "string" },
+            "columns": { "type": "number" },
+            "wrap": {
+              "type": "string",
+              "enum": ["wrap", "nowrap"]
+            },
+            "alignItems": {
+              "type": "string",
+              "enum": ["start", "center", "end", "stretch"]
+            },
+            "justifyContent": {
+              "type": "string",
+              "enum": [
+                "start",
+                "center",
+                "end",
+                "spaceBetween",
+                "spaceAround",
+                "spaceEvenly"
+              ]
+            }
+          },
+          "additionalProperties": false
+        },
+        "box": {
+          "type": "object",
+          "properties": {
+            "width": { "type": "string" },
+            "height": { "type": "string" },
+            "minHeight": { "type": "string" },
+            "maxHeight": { "type": "string" },
+            "minWidth": { "type": "string" },
+            "maxWidth": { "type": "string" },
+            "overflow": {
+              "type": "string",
+              "enum": ["visible", "hidden", "scroll"]
+            }
+          },
+          "additionalProperties": false
+        },
+        "spacing": {
+          "type": "object",
+          "properties": {
+            "padding": { "type": "string" },
+            "paddingX": { "type": "string" },
+            "paddingY": { "type": "string" },
+            "paddingTop": { "type": "string" },
+            "paddingRight": { "type": "string" },
+            "paddingBottom": { "type": "string" },
+            "paddingLeft": { "type": "string" },
+            "margin": { "type": "string" },
+            "marginX": { "type": "string" },
+            "marginY": { "type": "string" },
+            "marginTop": { "type": "string" },
+            "marginRight": { "type": "string" },
+            "marginBottom": { "type": "string" },
+            "marginLeft": { "type": "string" }
+          },
+          "additionalProperties": false
+        },
+        "typography": {
+          "type": "object",
+          "properties": {
+            "fontSize": { "type": "string" },
+            "fontWeight": {
+              "type": "string",
+              "enum": ["regular", "medium", "semibold", "bold"]
+            },
+            "lineHeight": {
+              "type": "string",
+              "enum": ["tight", "normal", "relaxed"]
+            },
+            "textAlign": {
+              "type": "string",
+              "enum": ["left", "center", "right"]
+            },
+            "color": { "type": "string" }
+          },
+          "additionalProperties": false
+        },
+        "background": {
+          "type": "object",
+          "properties": {
+            "color": { "type": "string" },
+            "image": { "type": "string" }
+          },
+          "additionalProperties": false
+        },
+        "border": {
+          "type": "object",
+          "properties": {
+            "radius": { "type": "string" },
+            "width": { "type": "string" },
+            "color": { "type": "string" },
+            "style": {
+              "type": "string",
+              "enum": ["solid", "dashed", "none"]
+            }
+          },
+          "additionalProperties": false
+        },
+        "effects": {
+          "type": "object",
+          "properties": {
+            "shadow": { "type": "string" },
+            "opacity": { "type": "number" }
+          },
+          "additionalProperties": false
+        },
+        "position": {
+          "type": "object",
+          "properties": {
+            "position": {
+              "type": "string",
+              "enum": ["relative", "absolute", "sticky"]
+            },
+            "top": { "type": "string" },
+            "right": { "type": "string" },
+            "bottom": { "type": "string" },
+            "left": { "type": "string" },
+            "zIndex": { "type": "number" }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

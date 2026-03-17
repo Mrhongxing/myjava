@@ -1,0 +1,243 @@
+{
+  "version": "1.0",
+  "kind": "ui_document",
+  "meta": {
+    "id": "doc_ai_landing_001",
+    "name": "AI Landing Page",
+    "description": "A simple landing page for an AI website",
+    "createdAt": "2026-03-12T00:00:00Z",
+    "updatedAt": "2026-03-12T00:00:00Z"
+  },
+  "designSystem": {
+    "tokensRef": "default",
+    "theme": "light"
+  },
+  "page": {
+    "id": "root",
+    "type": "page",
+    "name": "RootPage",
+    "props": {
+      "title": "Prompt2UI"
+    },
+    "style": {
+      "layout": {
+        "mode": "flex",
+        "direction": "column",
+        "gap": "space.8",
+        "alignItems": "stretch",
+        "justifyContent": "start"
+      },
+      "box": {
+        "width": "full",
+        "minHeight": "screen"
+      },
+      "spacing": {
+        "padding": "space.6"
+      },
+      "background": {
+        "color": "color.bg.default"
+      }
+    },
+    "events": {},
+    "bindings": {},
+    "meta": {
+      "generated": true
+    },
+    "children": [
+      {
+        "id": "navbar_main",
+        "type": "navbar",
+        "name": "MainNavbar",
+        "props": {
+          "sticky": false
+        },
+        "style": {
+          "layout": {
+            "mode": "flex",
+            "direction": "row",
+            "alignItems": "center",
+            "justifyContent": "spaceBetween",
+            "gap": "space.4"
+          },
+          "spacing": {
+            "paddingY": "space.4"
+          },
+          "background": {
+            "color": "color.bg.default"
+          }
+        },
+        "events": {},
+        "bindings": {},
+        "meta": {},
+        "children": [
+          {
+            "id": "brand_text",
+            "type": "text",
+            "name": "BrandText",
+            "props": {
+              "content": "Prompt2UI",
+              "tag": "span",
+              "truncate": false
+            },
+            "style": {
+              "typography": {
+                "fontSize": "text.lg",
+                "fontWeight": "bold",
+                "textAlign": "left",
+                "color": "color.text.primary"
+              }
+            },
+            "events": {},
+            "bindings": {},
+            "meta": {},
+            "children": []
+          },
+          {
+            "id": "signin_button",
+            "type": "button",
+            "name": "SignInButton",
+            "props": {
+              "text": "Sign In",
+              "variant": "outline",
+              "size": "md",
+              "disabled": false
+            },
+            "style": {
+              "border": {
+                "radius": "radius.md",
+                "width": "1px",
+                "color": "color.border.default"
+              },
+              "spacing": {
+                "paddingX": "space.4",
+                "paddingY": "space.2"
+              }
+            },
+            "events": {
+              "onClick": {
+                "action": "navigate",
+                "target": "/signin"
+              }
+            },
+            "bindings": {},
+            "meta": {},
+            "children": []
+          }
+        ]
+      },
+      {
+        "id": "hero_section",
+        "type": "section",
+        "name": "HeroSection",
+        "props": {
+          "role": "hero"
+        },
+        "style": {
+          "layout": {
+            "mode": "flex",
+            "direction": "column",
+            "alignItems": "center",
+            "justifyContent": "center",
+            "gap": "space.5"
+          },
+          "spacing": {
+            "paddingY": "space.12"
+          },
+          "background": {
+            "color": "color.bg.subtle"
+          }
+        },
+        "events": {},
+        "bindings": {},
+        "meta": {},
+        "children": [
+          {
+            "id": "hero_title",
+            "type": "text",
+            "name": "HeroTitle",
+            "props": {
+              "content": "Design websites with AI",
+              "tag": "h1",
+              "truncate": false
+            },
+            "style": {
+              "typography": {
+                "fontSize": "text.5xl",
+                "fontWeight": "bold",
+                "lineHeight": "tight",
+                "textAlign": "center",
+                "color": "color.text.primary"
+              }
+            },
+            "events": {},
+            "bindings": {},
+            "meta": {
+              "componentRole": "hero_title"
+            },
+            "children": []
+          },
+          {
+            "id": "hero_description",
+            "type": "text",
+            "name": "HeroDescription",
+            "props": {
+              "content": "Generate structured UI from natural language prompts and render it deterministically.",
+              "tag": "p",
+              "truncate": false
+            },
+            "style": {
+              "typography": {
+                "fontSize": "text.lg",
+                "fontWeight": "regular",
+                "lineHeight": "relaxed",
+                "textAlign": "center",
+                "color": "color.text.secondary"
+              },
+              "box": {
+                "maxWidth": "container.md"
+              }
+            },
+            "events": {},
+            "bindings": {},
+            "meta": {},
+            "children": []
+          },
+          {
+            "id": "hero_cta",
+            "type": "button",
+            "name": "HeroCTA",
+            "props": {
+              "text": "Get Started",
+              "variant": "primary",
+              "size": "lg",
+              "disabled": false
+            },
+            "style": {
+              "spacing": {
+                "paddingX": "space.5",
+                "paddingY": "space.3"
+              },
+              "border": {
+                "radius": "radius.lg"
+              },
+              "background": {
+                "color": "color.primary.500"
+              }
+            },
+            "events": {
+              "onClick": {
+                "action": "navigate",
+                "target": "/signup"
+              }
+            },
+            "bindings": {},
+            "meta": {
+              "componentRole": "primary_cta"
+            },
+            "children": []
+          }
+        ]
+      }
+    ]
+  }
+}
