@@ -18,7 +18,7 @@ public class date2 {
         int year1 = c.get(Calendar.YEAR);//年份
         int month1 = c.get(Calendar.MONTH) + 1; // Months are 0-based月份
         int day1 = c.get(Calendar.DAY_OF_MONTH);//日
-        int hour_half = c.get(Calendar.HOUR);//12小时制
+        //int hour_half = c.get(Calendar.HOUR);//12小时制
         int hour = c.get(Calendar.HOUR_OF_DAY);//24小时制
         int minute = c.get(Calendar.MINUTE);//分
         int second = c.get(Calendar.SECOND);//秒
